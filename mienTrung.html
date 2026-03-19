@@ -1,0 +1,1450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Ẩm thực miền Trung</title>
+    <link rel="stylesheet" href="test" />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap");
+
+    :root {
+      --primary-color: #d35400;
+      --secondary-color: #f39c12;
+      --text-dark: #2c3e50;
+      --text-light: #5d6d7e;
+      --bg-light: #fdfaf6;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Open Sans", sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      scroll-behavior: smooth;
+      scroll-padding-top: 120px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Playfair Display", serif;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    header {
+      background-color: var(--white);
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dautrang {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dautrang a {
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-left: 25px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    .slider {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .slides {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.35) blur(1px);
+      opacity: 0;
+      transform: scale(1);
+      transition:
+        opacity 3s ease,
+        filter 3s ease,
+        transform 3s ease;
+      will-change: opacity, transform;
+    }
+
+    .slide.active {
+      opacity: 1;
+      filter: brightness(0.65) blur(1px);
+      transform: scale(1.03);
+    }
+
+    .de {
+      position: relative;
+      z-index: 2;
+      padding: 0 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .de h1 {
+      color: white;
+      font-size: 4rem;
+      font-weight: 700;
+      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .de p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .vanhoa-title {
+      text-align: left;
+      margin-bottom: 18px;
+      margin-left: 40px;
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+
+    .vanhoa-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        var(--secondary-color)
+      );
+      border-radius: 999px;
+    }
+
+    .gioithieu,
+    .vanhoa {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 15px;
+      margin-bottom: 50px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .vanhoa {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      padding: 60px 0 40px;
+      background: linear-gradient(
+        135deg,
+        rgba(243, 156, 18, 0.12),
+        rgba(211, 84, 0, 0.08)
+      );
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .vanhoa::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 100%;
+      background: radial-gradient(
+        circle at top,
+        rgba(243, 156, 18, 0.2),
+        transparent 65%
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+    .vanhoa-parts {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .vanhoa-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      border-radius: 20px;
+      min-height: 55vh;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(211, 84, 0, 0.2);
+    }
+    .vanhoa-item::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -40px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(243, 156, 18, 0.18);
+    }
+    .vanhoa-item::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: -40px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(231, 76, 60, 0.15);
+    }
+    .vanhoa-item .bg-image {
+      display: none;
+    }
+    .vanhoa-item .text-overlay {
+      position: relative;
+      z-index: 2;
+      padding: 40px 30px;
+      max-width: 52%;
+      color: var(--text-dark);
+      text-align: left;
+      font-family: "Open Sans", sans-serif;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+    .vanhoa-item .text-overlay h2,
+    .vanhoa-item .text-overlay .vanhoa-title {
+      font-family: "Playfair Display", serif;
+      color: var(--primary-color);
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .vanhoa-item .text-overlay p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .vanhoa-item .illustration {
+      width: 35%;
+      max-width: 280px;
+      height: auto;
+      max-height: 400px;
+      border-radius: 12px;
+      z-index: 2;
+      object-fit: cover;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+    .vanhoa-item.right .illustration {
+      order: 2;
+      margin-left: 12px;
+    }
+    .vanhoa-item.left .illustration {
+      order: -1;
+      margin-right: 12px;
+    }
+    @media (max-width: 768px) {
+      .vanhoa-item {
+        flex-direction: column;
+        text-align: center;
+        min-height: auto;
+        padding: 30px 20px;
+      }
+      .vanhoa-item::before,
+      .vanhoa-item::after {
+        display: none;
+      }
+      .vanhoa-item .illustration {
+        width: 80%;
+        margin: 10px auto 0;
+        order: 0 !important;
+        height: auto;
+        max-height: 300px;
+      }
+      .vanhoa-item .text-overlay {
+        max-width: 100%;
+        padding: 30px 20px;
+      }
+
+      /* Prevent horizontal overflow on small screens */
+      .vanhoa {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    .content-layout {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+      margin-top: 0;
+    }
+
+    .main-content {
+      flex: 2 1 0;
+      min-width: 0;
+      order: 1;
+    }
+
+    .sidebar {
+      flex: 1 1 250px;
+      min-width: 250px;
+      max-width: 350px;
+      order: 2;
+    }
+
+    .sidebar {
+      /* position: sticky; */
+      /* top: 110px; */
+      align-self: start;
+      background: var(--white);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+
+      transform: translateX(20px);
+      opacity: 0;
+      transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+    }
+
+    .sidebar.visible {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      color: var(--primary-color);
+    }
+
+    .ad-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(211, 84, 0, 0.08);
+      border: 1px solid rgba(211, 84, 0, 0.2);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+
+    .ad-card img {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .ad-card .ad-content {
+      flex: 1;
+    }
+
+    .ad-card .ad-content a {
+      display: inline-block;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-decoration: none;
+      margin-bottom: 6px;
+    }
+
+    .ad-card .ad-content a:hover {
+      color: var(--primary-color);
+    }
+
+    .ad-card .ad-content p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .mon-an {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-top: 0;
+      scroll-margin-top: 140px;
+    }
+
+    .thanbai {
+      background: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .dish-video {
+      padding: 0 20px 20px;
+    }
+
+    .dish-video h5 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: var(--primary-color);
+    }
+
+    .dish-video .video-block {
+      margin-top: 10px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 992px) {
+      .content-layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: static;
+        top: auto;
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        transform: none;
+      }
+    }
+
+    .thanbai:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .thanbai img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .monan {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .monan h4 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .monan p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    .xemthem {
+      display: inline-block;
+      margin-top: auto;
+      padding: 8px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      align-self: flex-start;
+      transition: background 0.3s;
+    }
+
+    .xemthem:hover {
+      background-color: #a04000;
+    }
+
+    /* Sidebar "Xem thêm" button */
+    .sidebar .xemthem {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 24px 0 0;
+      padding: 12px 0;
+    }
+
+    footer {
+      background: #2c3e50;
+      color: white;
+      padding: 30px 5% 15px;
+      margin-top: 30px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 20px;
+    }
+
+    .footer-col h4 {
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      color: #bdc3c7;
+      text-decoration: none;
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 15px;
+      font-size: 0.85rem;
+      color: #bdc3c7;
+    }
+
+    .dautrang h2 {
+      color: crimson;
+    }
+    .de h1 {
+      color: crimson;
+    }
+    .gioithieu h2 {
+      color: crimson;
+    }
+
+    .video-section {
+      padding: 60px 20px;
+      background: #fff;
+      text-align: center;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .video-block {
+      background: #000;
+      color: #fff;
+      height: 0;
+      padding-bottom: 56.25%;
+      position: relative;
+    }
+    .video-block iframe,
+    .video-block video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    * {
+      transition: all 0.3s ease;
+    }
+
+    header {
+      transition: all 0.3s ease;
+    }
+
+    header:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    nav a {
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      transform: scale(1.1);
+      color: var(--primary-color);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #bdc3c7;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      color: var(--secondary-color);
+      padding-left: 5px;
+    }
+
+    .contact-icon {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #ccc;
+    }
+
+    .clickable {
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .clickable:hover {
+      transform: scale(1.05);
+    }
+  </style>
+
+  <body>
+    <!-- tiêu đề -->
+    <header>
+      <div class="dautrang">
+        <a href="mienTrung.html"><h2>Ẩm Thực Miền Trung</h2></a>
+        <nav>
+          <a href="#gioi-thieu">Giới thiệu</a>
+          <a href="#mon-an">Món ăn tiêu biểu</a>
+          <a href="#van-hoa">Văn hóa ẩm thực</a>
+          <a href="ykien.html">Đóng góp ý kiến</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="slider">
+      <div class="slides">
+        <div
+          class="slide active"
+          style="
+            background-image: url(&quot;https://dogifood.vn/Images/news/2008030203-am-thuc-mien-trung.jpg&quot;);
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url(&quot;https://huongvietmart.vn/wp-content/uploads/2022/09/san-pham-dac-trung-cua-mien-bac-va-mien-nam-1.jpg&quot;);
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url(&quot;https://www.vuadacsan.com.vn/image/catalog/%E1%BA%A9m%20th%E1%BB%B1c%203%20mi%E1%BB%81n/mam-com-viet-am-thuc-3-mien-vua-dac-san.jpg&quot;);
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url(&quot;https://dulichgiaitri.com/upload/2024/Mam2.jpg&quot;);
+          "
+        ></div>
+      </div>
+      <div class="de">
+        <h1>Ẩm Thực Miền Trung<br />Từ cung đình đến dân gian</h1>
+        <p>
+          Hành trình khám phá hương vị độc đáo của ẩm thực miền Trung Việt Nam
+          qua những món ăn đặc trưng và câu chuyện văn hóa đằng sau chúng.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const slides = document.querySelectorAll(".slider .slide");
+        if (!slides.length) return;
+
+        let current = 0;
+        const changeSlide = (next) => {
+          slides[current].classList.remove("active");
+          current = next;
+          slides[current].classList.add("active");
+        };
+
+        setInterval(() => {
+          changeSlide((current + 1) % slides.length);
+        }, 5000);
+      })();
+    </script>
+
+    <!-- nội dung chính -->
+    <main>
+      <section id="gioi-thieu">
+        <div class="gioithieu">
+          <h2>Giới thiệu về ẩm thực miền Trung</h2>
+          <p>
+            Ẩm thực miền Trung Việt Nam nổi bật với sự đa dạng và phong phú,
+            phản ánh sự giao thoa văn hóa từ nhiều vùng miền khác nhau. Từ những
+            món ăn cung đình tinh tế đến những món ăn dân gian đậm đà hương vị,
+            ẩm thực miền Trung mang đến trải nghiệm ẩm thực độc đáo và hấp dẫn.
+          </p>
+          <p>
+            Nếu ẩm thực miền Bắc tinh tế, thanh tao; miền Nam phóng khoáng, ngọt
+            ngào; thì ẩm thực miền Trung lại mang trong mình cái 'hồn' của nắng
+            và gió: đậm đà, cay nồng và chân chất. Món ăn miền Trung không chỉ
+            để no, mà còn là câu chuyện về văn hóa, về sự chắt chiu của con
+            người nơi đây. Hôm nay, hãy cùng với chúng mình xuôi theo dải đất
+            hẹp này để khám phá Top 8 món ăn đã làm nên thương hiệu ẩm thực miền
+            Trung nhé!
+          </p>
+        </div>
+      </section>
+      <div class="content-layout">
+        <aside class="sidebar">
+          <h3>Khám phá thêm</h3>
+          <div class="ad-card">
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="Đặc sản miền Nam"
+            />
+            <div class="ad-content">
+              <a
+                href="https://vincom.com.vn/trend/mon-ngon-mien-nam"
+                target="_blank"
+              >
+                40 đặc sản miền Nam đặc sắc, nổi tiếng, nhất định phải thử
+              </a>
+              <p>
+                Khám phá những món ăn đặc trưng miền Nam, từ Huế đến Cà Mau.
+              </p>
+            </div>
+          </div>
+          <div class="ad-card">
+            <img
+              src="https://ik.imagekit.io/tvlk/blog/2023/03/du-lich-mien-trung-11.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2"
+              alt="Văn hóa ẩm thực"
+            />
+            <div class="ad-content">
+              <a
+                href="https://www.traveloka.com/vi-vn/explore/destination/du-lich-mien-trung/216802"
+                >15 địa điểm du lịch miền Trung nhất định phải đến</a
+              >
+              <p>
+                Khám phá du lịch miền Trung với những địa điểm nổi tiếng và hấp
+                dẫn.
+              </p>
+            </div>
+          </div>
+          <div class="ad-card">
+            <img
+              src="https://hnm.1cdn.vn/2026/03/17/7f49466f57/nvan-1.jpg"
+              alt="Gửi ý kiến"
+            />
+            <div class="ad-content">
+              <a
+                href="https://hanoimoi.vn/giai-doan-nuoc-rut-on-thi-tot-nghiep-thpt-2026-bi-quyet-chinh-phuc-mon-ngu-van-739309.html"
+                >Giai đoạn nước rút ôn thi tốt nghiệp THPT 2026</a
+              >
+              <p>
+                Bí quyết chinh phục môn Ngữ Văn với những phương pháp học hiệu
+                quả và tài liệu tham khảo hữu ích.
+              </p>
+            </div>
+          </div>
+          <div class="ad-card">
+            <img
+              src="https://cdn.pastaxi-manager.onepas.vn/content/uploads/articles/nguyendoan/anh-blog/van-hoa-am-thuc-ba-mien/van-hoa-am-thuc-viet-nam-dac-trung-3-mien-bac-trung-nam-1.jpg"
+              alt="Ẩm thực đường phố miền Trung"
+            />
+            <div class="ad-content">
+              <a
+                href="https://pasgo.vn/blog/kham-pha-am-thuc-viet-tu-dac-trung-cua-ba-mien-3803"
+              >
+                Khám phá ẩm thực Việt từ đặc trưng của ba miền Bắc - Trung -
+                Nam</a
+              >
+              <p>
+                Tìm hiểu về ẩm thực đường phố Việt Nam với những món ăn đặc
+                trưng của ba miền Bắc, Trung, Nam.
+              </p>
+            </div>
+          </div>
+          <div class="ad-card">
+            <img
+              src="https://th.bing.com/th/id/OIP.4UnAPpFAfJAA9s2MwEiN1AHaDg?w=270&h=165&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+              alt="Du lịch ẩm thực miền Trung"
+            />
+            <div class="ad-content">
+              <a href="https://zingmp3.vn/moi-phat-hanh">BXH Nhạc Mới</a>
+              <p>
+                Cập nhật những bài hát mới nhất, hot nhất trên Zing MP3 để
+                thưởng thức âm nhạc đỉnh cao mọi lúc mọi nơi.
+              </p>
+            </div>
+          </div>
+          <a
+            class="xemthem"
+            href="https://baomoi.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Xem thêm</a
+          >
+        </aside>
+        <div class="main-content">
+          <h2>Món ăn tiêu biểu</h2>
+          <div class="mon-an">
+            <article class="thanbai" id="mon-an">
+              <img
+                src="https://thuanchay.vn/wp-content/uploads/2024/09/cach-nau-mi-quang-chay-8-1-1.webp"
+                alt="Mì Quảng"
+              />
+              <div class="monan">
+                <h4>Mì Quảng (Quảng Nam - Đà Nẵng)</h4>
+                <p>
+                  Chế biến: Sợi mì làm từ bột gạo, dày và dai, thường có màu
+                  trắng hoặc vàng (do nghệ). Nước nhân (nước lèo) chỉ được chan
+                  xăm xắp, nấu từ tôm, thịt heo, gà hoặc cá lóc.
+                </p>
+                <p>
+                  Thưởng thức: Phải có bánh tráng nướng (bẻ nhỏ bỏ vào tô), đậu
+                  phộng rang, chanh, ớt xanh và rau sống (cải non, bắp chuối).
+                </p>
+                <p>
+                  Giá & Nơi bán: 25.000 – 45.000 VNĐ/tô. Nổi tiếng là Mì Quảng
+                  ếch Trang (Đà Nẵng) hoặc các quán vỉa hè tại Hội An.
+                </p>
+                <a
+                  href="https://vi.wikipedia.org/wiki/M%C3%AC_Qu%E1%BA%A3ng"
+                  class="xemthem"
+                  >xem thêm</a
+                >
+              </div>
+
+              <!-- Video cho Mì Quảng -->
+              <div class="dish-video">
+                <h5>Video minh họa Mì Quảng</h5>
+                <div class="video-block">
+                  <video controls>
+                    <source src="miquang.mp4" type="video/mp4" />
+                    miquang
+                  </video>
+                </div>
+              </div>
+            </article>
+
+            <article class="thanbai">
+              <img
+                src="https://aeonmall-review-rikkei.cdn.vccloud.vn/website/21/tinymce/October2024/bun-bo-hue.jpg"
+                alt="Bún bò Huế"
+              />
+              <div class="monan">
+                <h4>Bún bò Huế</h4>
+                <p>
+                  Chế biến: Nước dùng được hầm từ xương bò với sả và mắm ruốc
+                  Huế tạo nên mùi thơm đặc trưng. Sợi bún bò Huế to và dày hơn
+                  bún thường. Topping đi kèm thường có thịt bắp bò, giò heo, chả
+                  cua, và huyết.
+                </p>
+                <p>
+                  Thưởng thức: Người dân thường ăn kèm rau sống gồm giá, bắp
+                  chuối thái mỏng, rau thơm và không thể thiếu một chút ớt chưng
+                  cay nồng.
+                </p>
+                <p>
+                  Giá & Nơi bán: 35.000 – 60.000 VNĐ/tô. Tại Huế, bạn có thể ghé
+                  Bún bò mụ Rơi hoặc các quán dọc đường Nguyễn Du.
+                </p>
+                <a
+                  href="https://vi.wikipedia.org/wiki/B%C3%BAn_b%C3%B2_Hu%E1%BA%BF"
+                  class="xemthem"
+                  >xem thêm</a
+                >
+              </div>
+
+              <!-- Video cho Bún bò Huế -->
+              <div class="dish-video">
+                <h5>Video minh họa Bún bò Huế</h5>
+                <div class="video-block">
+                  <video controls>
+                    <source src="bunbohue.mp4" type="video/mp4" />
+                    bunbo
+                  </video>
+                </div>
+              </div>
+            </article>
+
+            <!-- Món 3 -->
+            <article class="thanbai">
+              <img
+                src="https://drt.danang.vn/content/images/2024/07/quan-cao-lau-ngon-o-hoi-an-1-1.jpg"
+                alt="Cao lầu"
+              />
+              <div class="monan">
+                <h4>Cao lầu (Hội An, Quảng Nam)</h4>
+                <p>
+                  Chế biến: Sợi mì màu vàng đục, được làm từ gạo ngâm nước tro
+                  lấy từ Cù Lao Chàm. Thịt xá xíu được tẩm ướp đậm đà, nước dùng
+                  được lấy từ nước thịt rim.
+                </p>
+                <p>
+                  Thưởng thức: Ăn cùng rau đắng, giá trụng và những miếng ram
+                  giòn rụm (da heo chiên hoặc bột mì chiên).
+                </p>
+
+                <p>
+                  Giá & Nơi bán: 30.000 – 50.000 VNĐ/tô. Cao lầu Thanh, Cao lầu
+                  Bà Bé ngay trong phố cổ Hội An.
+                </p>
+                <a
+                  href="https://vi.wikipedia.org/wiki/Cao_l%E1%BA%A7u"
+                  class="xemthem"
+                  >xem thêm</a
+                >
+              </div>
+
+              <!-- Video cho Cao lầu -->
+              <div class="dish-video">
+                <h5>Video minh họa Cao lầu</h5>
+                <div class="video-block">
+                  <video controls>
+                    <source src="caolau.mp4" type="video/mp4" />
+                    caolau
+                  </video>
+                </div>
+              </div>
+            </article>
+
+            <!-- Món 4 -->
+            <article class="thanbai">
+              <img
+                src="https://kinhdoamthuc.com/wp-content/uploads/2023/07/day-cach-nau-com-hen.jpg"
+                alt=""
+              />
+              <div class="monan">
+                <h4>Cơm Hến (Huế)</h4>
+                <p>
+                  Chế biến: Hến được luộc kỹ, lấy thịt xào với gia vị. Nước luộc
+                  hến để riêng, thêm gừng và mắm ruốc cho nóng hổi. Cơm phải
+                  dùng cơm nguội để giữ độ giòn của các nguyên liệu khác.
+                </p>
+                <p>
+                  Thưởng thức: Một bát cơm hến hội tụ đủ vị: ngọt của hến, cay
+                  của ớt, bùi của lạc rang và giòn của tóp mỡ. Ăn kèm bắp chuối,
+                  rau thơm.
+                </p>
+                <p>
+                  Giá & Nơi bán: Rất rẻ, chỉ 10.000 – 20.000 VNĐ/tô. Khu vực cồn
+                  Hến hoặc đường Trương Định (Huế).
+                </p>
+                <a
+                  href="https://vi.wikipedia.org/wiki/C%C6%A1m_h%E1%BA%BFn"
+                  class="xemthem"
+                  >xem thêm</a
+                >
+              </div>
+
+              <!-- Video cho Cơm Hến -->
+              <div class="dish-video">
+                <h5>Video minh họa Cơm Hến</h5>
+                <div class="video-block">
+                  <video controls>
+                    <source src="comhen.mp4" type="video/mp4" />
+                    comhen
+                  </video>
+                </div>
+              </div>
+            </article>
+            <!-- Món 5-->
+            <article class="thanbai">
+              <img
+                src="https://cdn.tgdd.vn/Files/2022/12/01/1491895/huong-dan-cach-lam-nem-lui-hue-thom-lung-ngon-hut-khach-202212010726391723.jpg"
+                alt=""
+              />
+              <div class="monan">
+                <h4>Nem Lụi (Huế)</h4>
+                <p>
+                  Chế biến: Thịt heo xay nhuyễn trộn với bì, mỡ heo và gia vị,
+                  sau đó bao quanh thanh sả hoặc que tre rồi nướng trên than
+                  hồng cho đến khi vàng ươm, dậy mùi thơm.
+                </p>
+                <p>
+                  Thưởng thức: Cuộn nem vào bánh tráng cùng rau sống, khế chua,
+                  chuối chát. Điểm nhấn là nước chấm (nước lèo) sền sệt làm từ
+                  gan heo và đậu phộng béo bùi.
+                </p>
+                <p>
+                  Giá & Nơi bán: 5.000 – 8.000 VNĐ/cây. Quán Tài Phú hoặc các
+                  quán ở đường Mai Thúc Loan (Huế).
+                </p>
+                <a href="https://amthucxuhue.com/nem-lui-hue/" class="xemthem"
+                  >xem thêm</a
+                >
+              </div>
+
+              <!-- Video cho Nem Lụi -->
+              <div class="dish-video">
+                <h5>Video minh họa Nem Lụi</h5>
+                <div class="video-block">
+                  <video controls>
+                    <source src="nemlui.mp4" type="video/mp4" />
+                    nem
+                  </video>
+                </div>
+              </div>
+            </article>
+            <!-- Món 6 -->
+            <article class="thanbai">
+              <img
+                src="https://quangbinhtravel.vn/wp-content/uploads/2025/08/banh-bot-loc.jpg"
+                alt=""
+              />
+              <div class="monan">
+                <h4>Bánh Bột Lộc (Huế/Quảng Trị)</h4>
+                <p>
+                  Chế biến: Làm từ bột năng, nhân gồm tôm và thịt ba chỉ rim.
+                  Bánh được gói trong lá chuối rồi hấp chín (hoặc luộc trần).
+                </p>
+                <p>
+                  Thưởng thức: Bánh trong suốt nhìn rõ nhân tôm đỏ bên trong,
+                  dai dai, chấm với nước mắm chua ngọt có nhiều ớt lát.
+                </p>
+                <p>
+                  Giá & Nơi bán: 20.000 – 40.000 VNĐ/đĩa. Bánh Chi ở Huế hoặc
+                  các quán ven biển Nhật Lệ (Quảng Trị).
+                </p>
+                <a
+                  href="https://ticotravel.com.vn/banh-bot-loc-quang-tri/"
+                  class="xemthem"
+                  >xem thêm</a
+                >
+              </div>
+
+              <!-- Video cho Bánh Bột Lộc -->
+              <div class="dish-video">
+                <h5>Video minh họa Bánh Bột Lộc</h5>
+                <div class="video-block">
+                  <video controls>
+                    <source src="botloc.mp4" type="video/mp4" />
+                    ....
+                  </video>
+                </div>
+              </div>
+            </article>
+            <!-- Món 7 -->
+            <article class="thanbai">
+              <img
+                src="https://image.vovworld.vn/w500/Uploaded/vovworld/thpsplu/2019_02_09/banh-xeo-tom-nhay-quy-nhon_CPJP.jpg"
+                alt=""
+              />
+              <div class="monan">
+                <h4>Bánh Xèo Tôm Nhảy (Bình Định)</h4>
+                <p>
+                  Chế biến: Vỏ bánh làm từ bột gạo xay, mỏng và giòn tan. Nhân
+                  là những con tôm đất nhỏ còn tươi rói ("tôm nhảy") được rải
+                  lên mặt bánh ngay khi đổ bột vào chảo.
+                </p>
+                <p>
+                  Thưởng thức: Cuốn bánh xèo với bánh tráng mỏng, rau sống, xoài
+                  xanh, chấm mắm nêm hoặc mắm tỏi ớt.
+                </p>
+                <p>
+                  Giá & Nơi bán: 25.000 – 40.000 VNĐ/cái. Quán Gia Vỹ hoặc Rau
+                  Mầm (Quy Nhơn).
+                </p>
+                <a
+                  href="https://dulichviet.com.vn/am-thuc/banh-xeo-tom-nhay-binh-dinh-huong-vi-dam-da-cua-mien-dat-vo"
+                  class="xemthem"
+                  >xem thêm</a
+                >
+              </div>
+
+              <!-- Video cho Bánh Xèo Tôm Nhảy -->
+              <div class="dish-video">
+                <h5>Video minh họa Bánh Xèo Tôm Nhảy</h5>
+                <div class="video-block">
+                  <video controls>
+                    <source src="banhxeo.mp4" type="video/mp4" />
+                    ...
+                  </video>
+                </div>
+              </div>
+            </article>
+            <!-- Món 8 -->
+            <article class="thanbai">
+              <img
+                src="https://bizweb.dktcdn.net/thumb/1024x1024/100/514/078/products/bun-cha-ca-nha-trang-chuyen-de-hoc-cach-nau-cac-loai-bun-rosa-bien-hoa-dong-nai-1-ba37bf7a-8df5-4248-83d3-0060b00e14e2-9922f54f-8e69-4f7b-a9fe-9e1f5056eaca.jpg?v=1720249804000"
+                alt=""
+              />
+              <div class="monan">
+                <h4>Bún Chả Cá (Quy Nhơn/Nha Trang)</h4>
+                <p>
+                  Chế biến: Nước dùng thanh ngọt nấu từ xương cá (cá thu, cá
+                  cờ). Chả cá được làm từ thịt cá tươi quết nhuyễn, có hai loại
+                  là chả chiên và chả hấp.
+                </p>
+                <p>
+                  Thưởng thức: Ăn cùng rau xà lách, giá đỗ và một chút mắm tôm
+                  (tùy vùng) để tăng vị đậm đà.
+                </p>
+                <p>
+                  Giá & Nơi bán: 30.000 – 50.000 VNĐ/tô. Bún cá Ngọc Liên (Quy
+                  Nhơn) hoặc Bún cá sứa Năm Beo (Nha Trang).
+                </p>
+                <a
+                  href="https://vinwonders.com/vi/wonderpedia/news/bun-cha-ca-quy-nhon-top-quan-ngon-dan-ban-dia-review/"
+                  class="xemthem"
+                  >xem thêm</a
+                >
+              </div>
+
+              <!-- Video cho Bún Chả Cá -->
+              <div class="dish-video">
+                <h5>Video minh họa Bún Chả Cá</h5>
+                <div class="video-block">
+                  <video controls>
+                    <source src="bunchaca.mp4" type="video/mp4" />
+                    ...
+                  </video>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- văn hóa ẩm thực -->
+      <section id="van-hoa">
+        <div class="vanhoa">
+          <div class="vanhoa-parts">
+            <h2 class="vanhoa-title">Văn hóa ẩm thực</h2>
+            <!--  -->
+            <!-- -->
+            <div class="vanhoa-item right">
+              <div
+                class="bg-image"
+                style="
+                  background-image: url(&quot;https://images2.thanhnien.vn/528068263637045248/2024/5/2/hat-bai-choi-hoi-an-anh-nam-thinh-17146400493291506969946.jpg&quot;);
+                "
+              ></div>
+              <div class="text-overlay">
+                <h3>Văn hoá ăn uống người miền Trung</h3>
+                <p>
+                  Giữa miền đất nắng gió, ẩm thực miền Trung mang vẻ đẹp giản dị
+                  nhưng đậm đà và sâu sắc. Vị cay của ớt, vị mặn của mắm không
+                  chỉ tạo nên hương vị đặc trưng mà còn phản ánh tính cách mạnh
+                  mẽ, chịu thương chịu khó của con người nơi đây.
+                </p>
+                <p>
+                  Bữa cơm không chỉ để ăn mà là khoảnh khắc sum họp, gắn kết gia
+                  đình. Dù giản đơn, mỗi mâm cơm vẫn chứa đựng sự ấm áp và tấm
+                  lòng hiếu khách chân thành của người miền Trung.
+                </p>
+              </div>
+              <img
+                class="illustration clickable"
+                src="https://cdn2.tuoitre.vn/thumb_w/480/471584752817336320/2024/3/28/base64-17116405384081962415099.jpeg"
+                alt="Minh họa hiếu khách"
+              />
+            </div>
+
+            <!--  -->
+            <div class="vanhoa-item left">
+              <div
+                class="bg-image"
+                style="
+                  background-image: url(&quot;https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%208/Ng%C3%A0y_16/vietnamese_traditional_food_phot-1629087604389.jpg&quot;);
+                "
+              ></div>
+              <img
+                class="illustration clickable"
+                src="https://imgchinhsachcuocsong.vnanet.vn/MediaUpload/Org/2023/12/24/082144-6.jpg"
+                alt="Minh họa lễ hội"
+              />
+              <div class="text-overlay">
+                <h3>Ẩm thực và du lịch miền Trung</h3>
+                <p>
+                  Ẩm thực miền Trung là điểm nhấn đặc biệt trong hành trình khám
+                  phá của du khách. Những món ăn như bún bò Huế, mì Quảng không
+                  chỉ hấp dẫn bởi hương vị mà còn mang đậm bản sắc văn hoá vùng
+                  miền.
+                </p>
+                <p>
+                  Từ quán vỉa hè bình dị đến khu chợ nhộn nhịp, mỗi trải nghiệm
+                  ẩm thực đều để lại dấu ấn khó quên. Chính ẩm thực đã góp phần
+                  làm nên sức hút riêng và quảng bá vẻ đẹp của miền Trung.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal for image zoom -->
+      <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+          <img id="modalImage" src="" alt="" />
+        </div>
+      </div>
+
+      <!--  -->
+    </main>
+    <!-- chân trang -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col">
+          <h4>Ẩm Thực Miền Trung</h4>
+          <p>Khám phá hương vị độc đáo của ẩm thực miền Trung Việt Nam.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Liên kết</h4>
+          <ul>
+            <li><a href="#gioi-thieu">Giới thiệu</a></li>
+            <li><a href="#mon-an">Món ăn tiêu biểu</a></li>
+            <li><a href="#van-hoa">Văn hóa ẩm thực</a></li>
+            <li><a href="ykien.html">Đóng góp ý kiến</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Liên hệ</h4>
+          <div class="contact-info">
+            <a href="mailto:lequangdathaiphu@gmail.com" class="contact-item">
+              <span class="contact-icon">✉</span>
+              lequangdathaiphu@gmail.com
+            </a>
+            <a href="tel:03379175070" class="contact-item">
+              <span class="contact-icon">📱</span>
+              0337 917 507
+            </a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">© 2026 Ẩm thực Miền Trung | All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Smooth scroll with offset for sticky header
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector("header");
+        const headerHeight = header ? header.offsetHeight : 0;
+
+        document.querySelectorAll("nav a[href^='#']").forEach((link) => {
+          link.addEventListener("click", function (event) {
+            const target = document.querySelector(this.getAttribute("href"));
+            if (!target) return;
+            event.preventDefault();
+
+            const targetPosition =
+              target.getBoundingClientRect().top +
+              window.pageYOffset -
+              headerHeight -
+              10;
+
+            window.scrollTo({ top: targetPosition, behavior: "smooth" });
+          });
+        });
+
+        // Slide-in sidebar effect
+        const sidebar = document.querySelector(".sidebar");
+        if (sidebar) {
+          const showSidebar = () => {
+            const rect = sidebar.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+              sidebar.classList.add("visible");
+            }
+          };
+
+          showSidebar();
+          window.addEventListener("scroll", showSidebar, { passive: true });
+        }
+
+        // Image modal functionality
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.querySelector(".close");
+
+        document.querySelectorAll(".clickable").forEach((img) => {
+          img.addEventListener("click", function () {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
+          });
+        });
+
+        closeBtn.addEventListener("click", function () {
+          modal.style.display = "none";
+        });
+
+        modal.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
